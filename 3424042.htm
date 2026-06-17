@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Личный кабинет ГУАП</title>
+        <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+
+                                    <link rel="stylesheet" href="/build/ny_plugin.b0fd0523.css">
+                <link rel="stylesheet" href="/build/scssStyle.3a65ac3f.css">
+                <link rel="stylesheet" href="/build/newStyle.cdf68afb.css">
+                <link rel="stylesheet" href="/build/app.561392ec.css">
+                    
+                    <script src="/build/runtime.f32cd02e.js"></script><script src="/build/755.78eb0f61.js"></script><script src="/build/967.7c6938d9.js"></script><script src="/build/kladr.77eb34b1.js"></script>
+            <script src="/build/227.edaf9c3f.js"></script><script src="/build/804.fae5dda0.js"></script><script src="/build/329.836602a4.js"></script><script src="/build/546.9230c562.js"></script><script src="/build/88.60b5f6b0.js"></script><script src="/build/1.b06758ad.js"></script><script src="/build/123.d0d1b297.js"></script><script src="/build/app.a54b0267.js"></script>
+            <script src="/build/waves.a094ffba.js"></script>
+            
+            </head>
+
+    <body class="theme__blue">
+    <script>
+    document.getElementById('modalCloseBtn').addEventListener('click', function () {
+        document.getElementById('studentModal').style.display = 'none';
+        document.getElementById('passport-modal-backdrop').style.display = 'none';
+        setCookie("student_passport_modal_shown", "1", 10);
+    });
+
+    function setCookie(name, value, minutes) {
+        const expires = new Date(Date.now() + minutes * 60 * 1000).toUTCString();
+        document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+    }
+</script>
+        <header>
+    <nav class="navbar navbar-expand-md p-0 fixed-top flex-nowrap">
+        <button id="menu-burger" type="button" class="header-link header-link-transform d-mobile-none ms-2"
+                data-bs-toggle="collapse"
+                data-bs-target="#sidebar" aria-expanded="true" aria-controls="menu">
+            <i class="fa fa-bars suai-hover-theme"></i>
+        </button>
+        <div class="me-auto d-flex justify-content-center align-items-center ms-3 ms-lg-0">
+            <a class="navbar-brand desktop-center" href="/">
+                                    <img src="/images/logo.svg" width="90px" alt="ГУАП">
+                            </a>
+        </div>
+
+        <div class="navbar-right horizontal-scroll-only">
+            <ul class="nav no-borders flex-nowrap">
+                <li class="nav-item">
+                    <div class="form-check form-switch pt-3 p-4">
+                        <form action="/theme/switch/save" method="post" id="theme-switch-form">
+                            <input type="hidden" name="token" value="50c2369e4ba239e9488b49.VVqEx6i3D3-opyO1ib4AlfFhpXngtvYX8RoTV3oQTjs.AWPekOvjfEz7yGTt4IhpwL8A5jDU3aN2kkl3A092I0ICHOWP8cdNT-Tldg">
+                            <label class="form-check-label ms-3" for="lightSwitch">
+                                                                    <i id="deep-dark-switcher" class="fa fa-sun" style="color: #eca307; scale: 1.7"></i>
+                                    <input type="hidden" name="switch" value="on">
+                                                            </label>
+                        </form>
+                    </div>
+                </li>
+                                                    <li class="nav-item">
+                        <a href="/inside/feedback">
+                            <i class="fas fa-circle-question  "></i>
+                        </a>
+                    </li>
+                                <li class="nav-item">
+                    <a href="/inside/edit/profile">
+                        <i class="fa-solid fa-user-pen "></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<style>
+    .horizontal-scroll-only {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        max-width: 100%;
+    }
+
+    .horizontal-scroll-only::-webkit-scrollbar {
+        height: 6px;
+
+    }
+
+    @media (min-width: 768px) {
+        .horizontal-scroll-only {
+            overflow: visible !important;
+            white-space: normal;
+        }
+    }
+</style>
+<script>
+    $(function () {
+        $('#deep-dark-switcher').click(function () {
+            $('#theme-switch-form').submit();
+        });
+    });
+</script>
+        <menu class="d-lg-none sidebar sidebar__mobile offcanvas-lg offcanvas-start" id="sidebar-mobile"
+              aria-labelledby="sidebar">
+            <div class="offcanvas-header">
+    <a class="navbar-brand" href="/">
+                    <img src="/images/logo.svg" width="90px" alt="ГУАП">
+            </a>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar-mobile" aria-label="Закрыть"></button>
+</div>
+<div class="offcanvas-body p-0">
+    <ul class="sidebar__menu nav flex-column">
+    <li>
+                        <a href='/inside/profile'> Профиль </a>
+                    </li><li>
+                        <a href='/inside/student/tasks'> Задания </a>
+                    </li><li>
+                        <a href='/inside/student/materials'> Материалы </a>
+                    </li><li>
+                        <a href='/inside/student/reports'> Отчеты </a>
+                    </li><li>
+                        <a href='/inside/student/marks/new'> Зачетная книжка </a>
+                    </li><li>
+                        <a href='/inside/student/notice'> Объявления </a>
+                    </li><li>
+                       <button class='sub-menu' data-bs-toggle='collapse' data-bs-target='#submenu74-collapse' aria-expanded='false'>
+                          Учебный процесс
+                       </button>
+                       <div class='collapse ' id='submenu74-collapse'>
+					        <ul class='nav nav-second-level'><li>
+                        <a href='/inside/students/subjects/new'> Дисциплины </a>
+                    </li><li>
+                        <a href='/inside/student/groups'> Группа </a>
+                    </li><li>
+                        <a href='/inside/students/alternative'> Выбор предмета </a>
+                    </li></ul></div></li><li>
+                       <button class='sub-menu' data-bs-toggle='collapse' data-bs-target='#submenu76-collapse' aria-expanded='false'>
+                          Образовательная среда
+                       </button>
+                       <div class='collapse ' id='submenu76-collapse'>
+					        <ul class='nav nav-second-level'><li>
+                        <a href='/inside/library'> Библиотека </a>
+                    </li><li>
+                        <a href='https://lms.guap.ru/my/courses.php'> LMS </a>
+                    </li><li>
+                        <a href='https://lms.guap.ru/fdpo/course/view.php?id=1'> LMS ФДПО </a>
+                    </li><li>
+                        <a href='/inside/publications'> Публикации </a>
+                    </li><li>
+                        <a href='/inside/student/professors'> Преподаватели </a>
+                    </li></ul></div></li><li>
+                       <button class='sub-menu' data-bs-toggle='collapse' data-bs-target='#submenu75-collapse' aria-expanded='false'>
+                          Сервисы
+                       </button>
+                       <div class='collapse ' id='submenu75-collapse'>
+					        <ul class='nav nav-second-level'><li>
+                        <a href='/inside/references'> Справки </a>
+                    </li><li>
+                        <a href='/inside/evaluation/subjects'> Оценки дисциплин </a>
+                    </li><li>
+                        <a href='/inside/feedback'> Обратная связь </a>
+                    </li><li>
+                        <a href='/inside/student/application'> Подача заявлений </a>
+                    </li></ul></div></li><li>
+                        <a href='/inside/students/classes/schedule'> Расписание </a>
+                    </li><li>
+                        <a href='/inside/student/documents'> Мои документы </a>
+                    </li><li>
+                        <a href='/inside/navigation'> Навигация </a>
+                    </li><li>
+                        <a href='/help'> Помощь </a>
+                    </li>
+</ul></div>            <div class="sidebar__footer text-center p-2 text-nowrap">
+    <span class="small fw-light">Личный кабинет</span>
+    <div class="small fw-semibold"> УЦР ГУАП 2026 </div>
+</div>        </menu>
+
+        <div class="page__content container-fluid">
+            <div class="row flex-nowrap overflow-hidden position-relative">
+                <menu class="d-mobile-none sidebar col-auto px-0 collapse collapse-horizontal show" id="sidebar">
+                    <nav class="sidebar__navigation shadow-sm mb-3">
+    <div class="profile-picture">
+        <div class="profile-picture__photo profile_image_sm profile_image_wrap ou
+            outline-success">
+            <a href="/inside/profile">
+                <img alt="logo" class="profile_image" src="/images/no_image.jpg">
+            </a>
+        </div>
+        <div class="profile-picture__desc">
+            <span class="d-block w-100 text-center">Макаров Андрей Сергеевич</span>
+        </div>
+    </div>
+</nav>
+<nav class="sidebar__navigation shadow-sm">
+    <ul class="sidebar__menu nav flex-column">
+    <li>
+                        <a href='/inside/profile'> Профиль </a>
+                    </li><li>
+                        <a href='/inside/student/tasks'> Задания </a>
+                    </li><li>
+                        <a href='/inside/student/materials'> Материалы </a>
+                    </li><li>
+                        <a href='/inside/student/reports'> Отчеты </a>
+                    </li><li>
+                        <a href='/inside/student/marks/new'> Зачетная книжка </a>
+                    </li><li>
+                        <a href='/inside/student/notice'> Объявления </a>
+                    </li><li>
+                       <button class='sub-menu' data-bs-toggle='collapse' data-bs-target='#submenu74-collapse' aria-expanded='false'>
+                          Учебный процесс
+                       </button>
+                       <div class='collapse ' id='submenu74-collapse'>
+					        <ul class='nav nav-second-level'><li>
+                        <a href='/inside/students/subjects/new'> Дисциплины </a>
+                    </li><li>
+                        <a href='/inside/student/groups'> Группа </a>
+                    </li><li>
+                        <a href='/inside/students/alternative'> Выбор предмета </a>
+                    </li></ul></div></li><li>
+                       <button class='sub-menu' data-bs-toggle='collapse' data-bs-target='#submenu76-collapse' aria-expanded='false'>
+                          Образовательная среда
+                       </button>
+                       <div class='collapse ' id='submenu76-collapse'>
+					        <ul class='nav nav-second-level'><li>
+                        <a href='/inside/library'> Библиотека </a>
+                    </li><li>
+                        <a href='https://lms.guap.ru/my/courses.php'> LMS </a>
+                    </li><li>
+                        <a href='https://lms.guap.ru/fdpo/course/view.php?id=1'> LMS ФДПО </a>
+                    </li><li>
+                        <a href='/inside/publications'> Публикации </a>
+                    </li><li>
+                        <a href='/inside/student/professors'> Преподаватели </a>
+                    </li></ul></div></li><li>
+                       <button class='sub-menu' data-bs-toggle='collapse' data-bs-target='#submenu75-collapse' aria-expanded='false'>
+                          Сервисы
+                       </button>
+                       <div class='collapse ' id='submenu75-collapse'>
+					        <ul class='nav nav-second-level'><li>
+                        <a href='/inside/references'> Справки </a>
+                    </li><li>
+                        <a href='/inside/evaluation/subjects'> Оценки дисциплин </a>
+                    </li><li>
+                        <a href='/inside/feedback'> Обратная связь </a>
+                    </li><li>
+                        <a href='/inside/student/application'> Подача заявлений </a>
+                    </li></ul></div></li><li>
+                        <a href='/inside/students/classes/schedule'> Расписание </a>
+                    </li><li>
+                        <a href='/inside/student/documents'> Мои документы </a>
+                    </li><li>
+                        <a href='/inside/navigation'> Навигация </a>
+                    </li><li>
+                        <a href='/help'> Помощь </a>
+                    </li>
+</ul></nav>                    <div class="sidebar__footer text-center p-2 text-nowrap">
+    <span class="small fw-light">Личный кабинет</span>
+    <div class="small fw-semibold"> УЦР ГУАП 2026 </div>
+</div>                </menu>
+                <div id="wrapper" class="col flex-shrink-1 p-0">
+                    <div class="container-fluid p-3">
+
+                                                
+                            <div class="breadcrumb__container"><ol id="wo-breadcrumbs" class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList"><li                            itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/inside/students/subjects"
+                           itemprop="item"><span itemprop="name">Список дисциплин</span></a><meta itemprop="position" content="1"/></li><span class='separator'> /</span><li                            itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><span itemprop="name">Текущая дисциплина</span><meta itemprop="item" content="/inside/students/subjects/3424042"/><meta itemprop="position" content="2"/></li></ol></div>
+
+    
+    
+
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-body list-group p-0">
+                    <div class="list-group-item">
+                        <h3 class="page__title m-0">Алгоритмы и структуры данных</h3>
+                    </div>
+                    <div class="list-group-item">
+                        <h5>Кафедра: <span class="fw-light lh-base">Кафедра прикладной информатики (Кафедра 41)</span></h5>
+                    </div>
+                    <div class="list-group-item">
+                        <h5>
+                            Год / семестр:
+                            <span class="fw-light lh-base">
+                                    <span>2026</span> /
+                                    <span>осенний</span>
+                                </span>
+                        </h5>
+                    </div>
+                    <div class="list-group-item">
+                        <small class="float-end text-muted"></small>
+                        <h5>Тип контроля: <span class="fw-light lh-base">Экзамен</span></h5>
+                    </div>
+                    <div class="list-group-item">
+                        <small class="float-end text-muted"></small>
+                        <h5>Оценка за аттестацию: <span class="fw-light lh-base">-</span></h5>
+                    </div>
+                    <div class="list-group-item">
+                        <small class="float-end text-muted"></small>
+                        <h5 class="text-danger"> Аттестация пройдёт:</h5>
+                                                    <a class="link-switch link-switch-blue" target="_blank"
+                               href="http://raspsess.guap.ru">
+                                    <span class="fw-light lh-base">
+                                        по расписанию
+                                    </span>
+                            </a>
+                        
+                        
+                        
+                    </div>
+                    <div class="list-group-item">
+                        <small class="float-end text-muted"></small>
+                        <h5>Количество часов: <span class="fw-light lh-base">495 (380 ауд)</span>
+                        </h5>
+                    </div>
+
+                    
+                    <div class="list-group-item">
+                        <div class="col-6 mb-2">
+                                                            <a class="btn btn-primary btn-sm" target="_blank"
+                                   href="/inside/eduplan/ce114fa94163e6f015b98088c5a9ac7d/download">
+                                    <i class="fa fa-paste"></i>&nbsp;
+                                    Аннотация
+                                </a>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="card shadow-sm">
+                <h4 class="card-header underline__info">Преподаватель</h4>
+                <div class="card-body list-group p-0">
+                                    </div>
+            </div>
+            <ul class="nav nav-tabs tabs-animate mb-2 shadow-sm" id="myTabs" role="tablist">
+
+                <li role="presentation">
+                    <a data-bs-target="#tasks" role="tab" id="tasks-tab"
+                       data-bs-toggle="tab" aria-controls="tasks"
+                       aria-selected="true" class="active">Задания</a>
+                </li>
+
+                <li role="presentation">
+                    <a data-bs-target="#materials" role="tab" id="materials-tab"
+                       data-bs-toggle="tab" aria-controls="materials">Материалы</a>
+                </li>
+                <div class="tab"></div>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane transition active" role="tabpanel" id="tasks"
+                     aria-labelledby="tasks-tab">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <h5 class="text-center"></h5>
+                                <table class="table table-bordered align-middle table-striped mb-0">
+                                    <tbody>
+                                    <tr>
+                                        <td>Название задания</td>
+                                        <td>Выполнение</td>
+                                        <td>Баллы
+                                        </td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane transition" role="tabpanel" id="materials"
+                     aria-labelledby="materials-tab">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="text-center"></h5>
+                            <table class="table table-bordered align-middle table-striped mb-0">
+                                <tbody>
+                                                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                
+        <footer class="fixed-bottom bg-white shadow-lg mobile-menu">
+            <a class="mobile-menu__item" data-bs-toggle="offcanvas"
+               data-bs-target="#sidebar-mobile" aria-expanded="false">
+                <i class="fa fa-bars suai-hover-theme"></i>
+            </a>
+                            <a href="/inside/student/tasks/" class="mobile-menu__item">
+                    <i class="fa-regular fa-paste"></i>
+                </a>
+                        <a href="https://lms.guap.ru/" class="mobile-menu__item">
+                <span>LMS</span>
+            </a>
+            <a href="/inside/profile" class="mobile-menu__item">
+                <i class="fa-regular fa-user"></i>
+            </a>
+        </footer>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                let $element = $('.sidebar a[href="/inside/students/subjects/3424042"]');
+                let $element_mobile = $('.mobile-menu a[href="/inside/students/subjects/3424042"]');
+
+                $element.addClass('_active');
+                $element_mobile.addClass('_active');
+
+                let $item = $element.parents('li:has(.sub-menu)');
+                if ($item.length) {
+                    $item.children('.sub-menu').attr('aria-expanded', 'true');
+                    $item.children('.collapse').addClass('show');
+                }
+            });
+        </script>
+                
+            <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(86883871, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/86883871" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Top.Mail.Ru counter -->
+    <script type="text/javascript">
+        var _tmr = window._tmr || (window._tmr = []);
+        _tmr.push({id: "3604540", type: "pageView", start: (new Date()).getTime()});
+        (function (d, w, id) {
+            if (d.getElementById(id)) return;
+            var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+            ts.src = "https://top-fwz1.mail.ru/js/code.js";
+            var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+            if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+        })(document, window, "tmr-code");
+    </script>
+    <noscript><div><img src="https://top-fwz1.mail.ru/counter?id=3604540;js=na" style="position:absolute;left:-9999px;" alt="Top.Mail.Ru" /></div></noscript>
+    <!-- /Top.Mail.Ru counter -->
+    </body>
+</html>
